@@ -3,6 +3,8 @@ package me.braydon.chatgpt;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import me.braydon.chatgpt.web.ApiCredentials;
+import me.braydon.chatgpt.web.ApiWebRequest;
+import me.braydon.chatgpt.web.response.impl.ModelList;
 
 /**
  * @author Braydon
@@ -16,9 +18,17 @@ public final class ChatGPT {
      */
     @NonNull private final ApiCredentials apiCredentials;
     
-    public void chatCompletions(@NonNull ModelEnum modelEnum) {
-        chatCompletions(modelEnum.getId());
+    /**
+     * Get a list of models.
+     *
+     * @return the models
+     * @see ModelList
+     */
+    @NonNull
+    public ModelList models() {
+        return ApiWebRequest.get()
+                   .path("/models")
+                   .credentials(apiCredentials)
+                   .build().execute(ModelList.class);
     }
-    
-    public void chatCompletions(@NonNull String model) {}
 }

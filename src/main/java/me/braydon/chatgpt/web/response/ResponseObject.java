@@ -1,11 +1,13 @@
 package me.braydon.chatgpt.web.response;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.ToString;
 
 /**
+ * An object representing a response
+ * from the OpenAI API. Each object
+ * containing the type of the object.
+ *
  * @author Braydon
  */
 @Getter @ToString

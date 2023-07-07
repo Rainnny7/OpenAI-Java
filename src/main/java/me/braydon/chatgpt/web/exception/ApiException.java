@@ -18,7 +18,7 @@ public final class ApiException extends RuntimeException {
     /**
      * The HTTP code of this error.
      */
-    private int httpCode;
+    private final int httpCode;
     
     /**
      * The code of this error.
