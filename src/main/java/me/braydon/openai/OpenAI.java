@@ -85,6 +85,9 @@ public final class OpenAI {
      */
     @NonNull
     public ChatCompletion chatCompletion(@NonNull ModelEnum model, @NonNull ChatMessage... history) {
+        if (!model.hasCompatibilityFor(ModelEnum.ModelCompatibility.NATIVE_CHAT_COMPLETIONS)) { // Incompatible
+            throw new IllegalArgumentException("Model not compatible with native chat completions");
+        }
         return chatCompletion(model.getId(), history);
     }
     
