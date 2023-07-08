@@ -128,6 +128,22 @@ public enum ModelEnum {
     @NonNull private final ModelCompatibility[] compatibilities;
     
     /**
+     * Check if this model has
+     * the given compatibility.
+     *
+     * @param compatibility the compatibility
+     * @return true if has compatibility, otherwise false
+     */
+    public boolean hasCompatibilityFor(@NonNull ModelCompatibility compatibility) {
+        for (ModelCompatibility modelCompatibility : compatibilities) {
+            if (modelCompatibility == compatibility) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
      * Compatibility options for models.
      *
      * @link <a href="https://platform.openai.com/docs/models/model-endpoint-compatibility">Model Compatibility</a>

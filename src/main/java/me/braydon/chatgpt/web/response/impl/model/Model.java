@@ -1,4 +1,4 @@
-package me.braydon.chatgpt.web.response.impl;
+package me.braydon.chatgpt.web.response.impl.model;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.EqualsAndHashCode;

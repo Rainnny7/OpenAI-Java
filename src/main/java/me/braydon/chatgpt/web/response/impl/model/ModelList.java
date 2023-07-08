@@ -1,4 +1,4 @@
-package me.braydon.chatgpt.web.response.impl;
+package me.braydon.chatgpt.web.response.impl.model;
 
 import lombok.Getter;
 import lombok.NonNull;

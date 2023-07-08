@@ -12,6 +12,7 @@ import me.braydon.chatgpt.web.response.ResponseObject;
 import okhttp3.*;
 
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Represents an API request to the OpenAI API.
@@ -50,28 +51,6 @@ public final class ApiWebRequest {
      * The {@link RequestBody} to use in this request.
      */
     private final RequestBody body;
-    
-    /**
-     * Build a POST request builder.
-     *
-     * @param body the request body
-     * @return the request builder
-     * @see RequestBody for request body
-     */
-    @NonNull
-    public static ApiWebRequestBuilder post(@NonNull RequestBody body) {
-        return ApiWebRequest.builder().method("POST").body(body);
-    }
-    
-    /**
-     * Build a GET request builder.
-     *
-     * @return the request builder
-     */
-    @NonNull
-    public static ApiWebRequestBuilder get() {
-        return ApiWebRequest.builder().method("GET");
-    }
     
     /**
      * Execute this request and get
@@ -116,5 +95,39 @@ public final class ApiWebRequest {
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
+    }
+    
+    /**
+     * Build a POST request builder.
+     *
+     * @param body the request body
+     * @return the request builder
+     * @see RequestBody for request body
+     */
+    @NonNull
+    public static ApiWebRequestBuilder post(@NonNull RequestBody body) {
+        return ApiWebRequest.builder().method("POST").body(body);
+    }
+    
+    /**
+     * Build a POST request builder.
+     *
+     * @param mappedBody the mapped request body
+     * @return the request builder
+     */
+    @NonNull
+    public static ApiWebRequestBuilder post(@NonNull Map<String, Object> mappedBody) {
+        RequestBody jsonBody = RequestBody.create(GSON.toJson(mappedBody), MediaType.parse("application/json"));
+        return ApiWebRequest.builder().method("POST").body(jsonBody);
+    }
+    
+    /**
+     * Build a GET request builder.
+     *
+     * @return the request builder
+     */
+    @NonNull
+    public static ApiWebRequestBuilder get() {
+        return ApiWebRequest.builder().method("GET");
     }
 }
