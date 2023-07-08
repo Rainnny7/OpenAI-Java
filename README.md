@@ -1,6 +1,32 @@
 # OpenAI-Java
-
 A Java library to interact with the OpenAI API.
+
+## Dependency
+
+### Maven
+```xml
+<repository>
+    <id>rainnny-repo-public</id>
+    <url>https://maven.rainnny.club/public</url>
+</repository>
+
+<dependency>
+    <groupId>me.braydon</groupId>
+    <artifactId>OpenAI-Java</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+### Gradle
+```
+maven {
+    name = "rainnnyRepoPublic"
+    url = uri("https://maven.rainnny.club/public")
+}
+
+implementation("me.braydon:OpenAI-Java:1.0.0")
+```
+
 ## Examples
 
 ### Create the client
