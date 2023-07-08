@@ -109,7 +109,11 @@ public final class ApiWebRequest {
                 throw new ApiException(httpCode, code, type, message); // Throw the exception
             }
             // Handle the response
-            return GSON.fromJson(bodyString, responseType);
+            T typedResponse = GSON.fromJson(bodyString, responseType);
+            if (debugging) { // Debugging
+                System.out.println("Response: " + typedResponse);
+            }
+            return typedResponse;
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
