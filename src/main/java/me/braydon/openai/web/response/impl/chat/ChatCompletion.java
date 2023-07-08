@@ -1,11 +1,11 @@
-package me.braydon.chatgpt.web.response.impl.chat;
+package me.braydon.openai.web.response.impl.chat;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import me.braydon.chatgpt.web.response.ChatMessage;
-import me.braydon.chatgpt.web.response.ResponseObject;
+import me.braydon.openai.web.response.ChatMessage;
+import me.braydon.openai.web.response.ResponseObject;
 
 /**
  * @author Braydon

@@ -1,4 +1,4 @@
-package me.braydon.chatgpt.web;
+package me.braydon.openai.web;
 
 import lombok.Builder;
 import lombok.Getter;

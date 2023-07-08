@@ -1,10 +1,10 @@
-package me.braydon.chatgpt.web.response.impl.model;
+package me.braydon.openai.web.response.impl.model;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import me.braydon.chatgpt.web.response.ResponseObject;
+import me.braydon.openai.web.response.ResponseObject;
 
 /**
  * Represent a permission for a {@link Model}.

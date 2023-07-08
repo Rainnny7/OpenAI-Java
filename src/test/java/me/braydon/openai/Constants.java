@@ -1,6 +1,6 @@
-package me.braydon.chatgpt;
+package me.braydon.openai;
 
-import me.braydon.chatgpt.web.ApiCredentials;
+import me.braydon.openai.web.ApiCredentials;
 
 /**
  * Tests require the following env vars to be set:
@@ -12,9 +12,9 @@ public class Constants {
     /**
      * The test client to use.
      *
-     * @see ChatGPT for the client
+     * @see OpenAI for the client
      */
-    protected static final ChatGPT TEST_CLIENT = new ChatGPT(ApiCredentials.builder()
+    protected static final OpenAI TEST_CLIENT = new OpenAI(ApiCredentials.builder()
                                                                  .apiKey(System.getenv("TEST_API_KEY"))
                                                                  .build());
 }

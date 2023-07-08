@@ -1,4 +1,4 @@
-package me.braydon.chatgpt.web;
+package me.braydon.openai.web;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -7,8 +7,8 @@ import com.google.gson.JsonObject;
 import lombok.Builder;
 import lombok.NonNull;
 import lombok.ToString;
-import me.braydon.chatgpt.web.exception.ApiException;
-import me.braydon.chatgpt.web.response.ResponseObject;
+import me.braydon.openai.web.exception.ApiException;
+import me.braydon.openai.web.response.ResponseObject;
 import okhttp3.*;
 
 import java.io.IOException;

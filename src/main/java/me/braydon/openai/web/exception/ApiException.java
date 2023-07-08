@@ -1,9 +1,9 @@
-package me.braydon.chatgpt.web.exception;
+package me.braydon.openai.web.exception;
 
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
-import me.braydon.chatgpt.web.ApiWebRequest;
+import me.braydon.openai.web.ApiWebRequest;
 
 /**
  * This exception is raised when there is

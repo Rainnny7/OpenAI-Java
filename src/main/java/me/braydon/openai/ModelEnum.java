@@ -1,10 +1,10 @@
-package me.braydon.chatgpt;
+package me.braydon.openai;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
-import me.braydon.chatgpt.common.TimeUtils;
+import me.braydon.openai.common.TimeUtils;
 
 import java.util.Calendar;
 import java.util.Date;

@@ -1,9 +1,9 @@
-package me.braydon.chatgpt.web.response.impl.model;
+package me.braydon.openai.web.response.impl.model;
 
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
-import me.braydon.chatgpt.web.response.ResponseObject;
+import me.braydon.openai.web.response.ResponseObject;
 
 import java.util.Iterator;
 

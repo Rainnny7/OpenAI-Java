@@ -1,14 +1,14 @@
-package me.braydon.chatgpt;
+package me.braydon.openai;
 
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
-import me.braydon.chatgpt.web.ApiCredentials;
-import me.braydon.chatgpt.web.ApiWebRequest;
-import me.braydon.chatgpt.web.exception.ApiException;
-import me.braydon.chatgpt.web.response.ChatMessage;
-import me.braydon.chatgpt.web.response.impl.chat.ChatCompletion;
-import me.braydon.chatgpt.web.response.impl.model.Model;
-import me.braydon.chatgpt.web.response.impl.model.ModelList;
+import me.braydon.openai.web.ApiCredentials;
+import me.braydon.openai.web.ApiWebRequest;
+import me.braydon.openai.web.exception.ApiException;
+import me.braydon.openai.web.response.ChatMessage;
+import me.braydon.openai.web.response.impl.chat.ChatCompletion;
+import me.braydon.openai.web.response.impl.model.Model;
+import me.braydon.openai.web.response.impl.model.ModelList;
 
 import java.util.Map;
 
@@ -16,7 +16,7 @@ import java.util.Map;
  * @author Braydon
  */
 @AllArgsConstructor
-public final class ChatGPT {
+public final class OpenAI {
     /**
      * Credentials to the OpenAI API.
      *

@@ -1,9 +1,8 @@
-package me.braydon.chatgpt;
+package me.braydon.openai;
 
 import lombok.NonNull;
-import me.braydon.chatgpt.web.response.impl.model.Model;
-import me.braydon.chatgpt.web.response.impl.model.ModelList;
-import org.junit.jupiter.api.Assumptions;
+import me.braydon.openai.web.response.impl.model.Model;
+import me.braydon.openai.web.response.impl.model.ModelList;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

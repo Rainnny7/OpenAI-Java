@@ -1,7 +1,7 @@
-package me.braydon.chatgpt;
+package me.braydon.openai;
 
-import me.braydon.chatgpt.web.response.ChatMessage;
-import me.braydon.chatgpt.web.response.impl.chat.ChatCompletion;
+import me.braydon.openai.web.response.ChatMessage;
+import me.braydon.openai.web.response.impl.chat.ChatCompletion;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

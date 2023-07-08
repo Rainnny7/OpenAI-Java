@@ -1,4 +1,4 @@
-package me.braydon.chatgpt.web.response;
+package me.braydon.openai.web.response;
 
 import lombok.Getter;
 import lombok.ToString;

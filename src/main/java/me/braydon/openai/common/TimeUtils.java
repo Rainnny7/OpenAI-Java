@@ -1,4 +1,4 @@
-package me.braydon.chatgpt.common;
+package me.braydon.openai.common;
 
 import lombok.NonNull;
 import lombok.experimental.UtilityClass;

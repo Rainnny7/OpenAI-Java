@@ -1,9 +1,9 @@
-package me.braydon.chatgpt.web.response;
+package me.braydon.openai.web.response;
 
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
-import me.braydon.chatgpt.web.response.impl.chat.ChatCompletion;
+import me.braydon.openai.web.response.impl.chat.ChatCompletion;
 
 /**
  * A message returned in a {@link ChatCompletion.Choice}.
