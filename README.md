@@ -5,7 +5,7 @@ A Java library to interact with the OpenAI API.
 - [Dependency](#dependency)
 - [Examples](#examples)
 - [Environment Variables](#environment-variables)
-- [TODO](#todo)
+- [Todo](#todo)
 
 ## Dependency
 
