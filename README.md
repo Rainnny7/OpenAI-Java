@@ -5,6 +5,7 @@ A Java library to interact with the OpenAI API.
 - [Dependency](#dependency)
 - [Examples](#examples)
 - [Environment Variables](#environment-variables)
+- [TODO](#todo)
 
 ## Dependency
 
@@ -79,3 +80,9 @@ for (ChatCompletion.Choice choice : completion) {
 | Variable       | Description                         |
 | :------------: | :---------------------------------: |
 | `TEST_API_KEY` | **Required**. Your OpenAI API key   |
+
+## TODO
+- [ ] SSE implementation for streaming completions
+- [ ] A better interface approach for the API
+- [ ] Support for other routes
+- [ ] More in depth multithreading capabilities
