@@ -1,6 +1,11 @@
 # OpenAI-Java
 A Java library to interact with the OpenAI API.
 
+## Summary
+- [Dependency](#dependency)
+- [Examples](#examples)
+- [Environment Variables](#environment-variables)
+
 ## Dependency
 
 ### Maven
