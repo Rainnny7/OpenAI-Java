@@ -48,9 +48,14 @@ public final class ApiWebRequest {
     private final String model;
     
     /**
-     * The {@link RequestBody} to use in this request.
+     * The json body to use in this request.
      */
-    private final RequestBody body;
+    private final String body;
+    
+    /**
+     * Should we debug this request?
+     */
+    private final boolean debugging;
     
     /**
      * Execute this request and get
@@ -65,19 +70,32 @@ public final class ApiWebRequest {
         // Build the request
         Request.Builder requestBuilder = new Request.Builder()
                                              .url(API_ENDPOINT + path)
-                                             .method(method, body)
+                                             .method(method, body == null ? null : RequestBody.create(body, MediaType.parse("application/json")))
                                              .header("Content-Type", "application/json")
                                              .header("Authorization", "Bearer " + credentials.getApiKey());
         // Append organization if present in the credentials
         if (credentials.hasOrganization()) {
-            requestBuilder.header("OpenAI-Organization", "Bearer " + credentials.getOrganization());
+            requestBuilder.header("OpenAI-Organization", credentials.getOrganization());
         }
         // Attempt to send the request to the API
+        if (debugging) { // Debugging
+            System.out.println(String.format("Sending %s request to %s", requestBuilder.getMethod$okhttp(), requestBuilder.getUrl$okhttp()));
+            System.out.println("Creds: " + credentials);
+            System.out.println("Request Body: " + (body == null ? "n/a" : GSON.toJson(body)));
+        }
         try (Response response = HTTP_CLIENT.newCall(requestBuilder.build()).execute()) {
+            int httpCode = response.code(); // The HTTP response code
+            if (debugging) { // Debugging
+                System.out.println("Received HTTP code " + httpCode);
+            }
             ResponseBody responseBody = response.body();
             assert responseBody != null; // We need a response body
             String bodyString = responseBody.string();
             JsonObject jsonObject = GSON.fromJson(bodyString, JsonObject.class);
+            
+            if (debugging) { // Debugging
+                System.out.println("Response Body: " + bodyString);
+            }
             
             // Handle errors returned from the API
             JsonElement errorJsonElement = jsonObject.get("error");
@@ -88,7 +106,7 @@ public final class ApiWebRequest {
                 String code = codeJsonElement.isJsonNull() ? null : codeJsonElement.getAsString(); // The error code
                 String type = errorJsonObject.get("type").getAsString(); // The error type
                 String message = errorJsonObject.get("message").getAsString(); // The error message
-                throw new ApiException(response.code(), code, type, message); // Throw the exception
+                throw new ApiException(httpCode, code, type, message); // Throw the exception
             }
             // Handle the response
             return GSON.fromJson(bodyString, responseType);
@@ -100,12 +118,11 @@ public final class ApiWebRequest {
     /**
      * Build a POST request builder.
      *
-     * @param body the request body
+     * @param body the json request body
      * @return the request builder
-     * @see RequestBody for request body
      */
     @NonNull
-    public static ApiWebRequestBuilder post(@NonNull RequestBody body) {
+    public static ApiWebRequestBuilder post(@NonNull String body) {
         return ApiWebRequest.builder().method("POST").body(body);
     }
     
@@ -117,8 +134,7 @@ public final class ApiWebRequest {
      */
     @NonNull
     public static ApiWebRequestBuilder post(@NonNull Map<String, Object> mappedBody) {
-        RequestBody jsonBody = RequestBody.create(GSON.toJson(mappedBody), MediaType.parse("application/json"));
-        return ApiWebRequest.builder().method("POST").body(jsonBody);
+        return ApiWebRequest.builder().method("POST").body(GSON.toJson(mappedBody));
     }
     
     /**
