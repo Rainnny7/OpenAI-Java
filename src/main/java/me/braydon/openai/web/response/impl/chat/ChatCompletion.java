@@ -31,6 +31,11 @@ public final class ChatCompletion extends ResponseObject implements Iterable<Cha
     private long created;
     
     /**
+     * The completion token usage.
+     */
+    private TokenUsage usage;
+    
+    /**
      * Get the amount of choices
      * in this completion.
      *
@@ -73,6 +78,36 @@ public final class ChatCompletion extends ResponseObject implements Iterable<Cha
         private String finishReason;
     }
     
+    /**
+     * Token usage for {@link ChatCompletion}'s.
+     *
+     * @link <a href="https://platform.openai.com/docs/introduction/tokens">Token Docs</a>
+     */
+    @Getter @ToString
+    public static class TokenUsage {
+        /**
+         * The tokens gathered from the initial prompt.
+         */
+        @SerializedName("prompt_tokens")
+        private int promptTokens;
+        
+        /**
+         * The tokens from the completion {@link Choice}'s.
+         */
+        @SerializedName("completion_tokens")
+        private int completionTokens;
+        
+        /**
+         * The total number of tokens of
+         * both prompt and completion tokens
+         */
+        @SerializedName("total_tokens")
+        private int totalTokens;
+    }
+    
+    /**
+     * The {@link Iterator} to use for {@link Choice}'s.
+     */
     public class ChoiceIterator implements Iterator<Choice> {
         private int index; // The current choice index
         

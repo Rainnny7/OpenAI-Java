@@ -30,6 +30,9 @@ public final class ModelList extends ResponseObject implements Iterable<Model> {
         return new ModelIterator();
     }
     
+    /**
+     * The {@link Iterator} to use for {@link Model}'s.
+     */
     public class ModelIterator implements Iterator<Model> {
         private int index; // The current model index
         
