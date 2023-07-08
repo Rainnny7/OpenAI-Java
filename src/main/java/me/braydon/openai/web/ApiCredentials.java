@@ -29,7 +29,7 @@ public class ApiCredentials {
      * @return whether these creds contain an org
      */
     public boolean hasOrganization() {
-        return organization != null;
+        return organization != null && (!organization.trim().isEmpty());
     }
     
     @Override

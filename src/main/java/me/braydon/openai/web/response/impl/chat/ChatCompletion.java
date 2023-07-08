@@ -3,15 +3,18 @@ package me.braydon.openai.web.response.impl.chat;
 import com.google.gson.annotations.SerializedName;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.ToString;
 import me.braydon.openai.web.response.ChatMessage;
 import me.braydon.openai.web.response.ResponseObject;
+
+import java.util.Iterator;
 
 /**
  * @author Braydon
  */
 @Getter @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false) @ToString(callSuper = true)
-public final class ChatCompletion extends ResponseObject {
+public final class ChatCompletion extends ResponseObject implements Iterable<ChatCompletion.Choice> {
     /**
      * The id of this completion.
      */
@@ -38,6 +41,17 @@ public final class ChatCompletion extends ResponseObject {
     }
     
     /**
+     * Get the iterator for the choices.
+     *
+     * @return the choice iterator
+     * @see ChoiceIterator for iterator
+     */
+    @Override @NonNull
+    public Iterator<Choice> iterator() {
+        return new ChoiceIterator();
+    }
+    
+    /**
      * A choice in a {@link ChatCompletion}.
      */
     @Getter @ToString
@@ -57,5 +71,19 @@ public final class ChatCompletion extends ResponseObject {
          */
         @SerializedName("finish_reason")
         private String finishReason;
+    }
+    
+    public class ChoiceIterator implements Iterator<Choice> {
+        private int index; // The current choice index
+        
+        @Override
+        public boolean hasNext() {
+            return index < choices.length;
+        }
+        
+        @Override @NonNull
+        public Choice next() {
+            return choices[index++];
+        }
     }
 }

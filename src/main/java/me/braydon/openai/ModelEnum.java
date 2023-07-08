@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Represents a ChatGPT model.
+ * Represents an OpenAI model.
  *
  * @author Braydon
  * @link <a href="https://platform.openai.com/docs/models">Model Docs</a>
